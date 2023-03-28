@@ -42,8 +42,8 @@ import RightBottom from '@/components/right-bottom-svg.vue'
 import CenterSvg from '@/components/cernter-svg.vue'
 import BottomPancel from '@/components/bottom-panel.vue'
 
-import { getPowerScreenData } from '@/services'
-
+// import { getPowerScreenData } from '@/services'
+import res from '@/data/data.json'
 // 充电桩饱和比例
 let chargingPile = ref(chargingPileData)
 // 流程监控
@@ -59,18 +59,19 @@ let chargingTop4 = ref(chargingTop4Data)
 let percentage = ref(0)
 // 发起网络请求拿到首页的数据
 onMounted(() => {
-    getPowerScreenData()
-        .then((res) => {
-            console.log(res)
-            chargingPile.value = res.data.chargingPile.data
-            processMonitoring.value = res.data.processMonitoring.data
-            chargingStatistics.value = res.data.chargingStatistics.data
-            exceptionMonitoring.value = res.data.exceptionMonitoring.data
-            dataAnalysis.value = res.data.dataAnalysis.data
+    // console.log(getPowerScreenData)
+    // getPowerScreenData()
+    //     .then((res) => {
+    //         console.log(res)
+    chargingPile.value = res.data.chargingPile.data
+    processMonitoring.value = res.data.processMonitoring.data
+    chargingStatistics.value = res.data.chargingStatistics.data
+    exceptionMonitoring.value = res.data.exceptionMonitoring.data
+    dataAnalysis.value = res.data.dataAnalysis.data
 
-            chargingTop4.value = res.data.chargingTop4.data
-            percentage.value = res.data.chargingTop4.totalPercentage
-        })
+    chargingTop4.value = res.data.chargingTop4.data
+    percentage.value = res.data.chargingTop4.totalPercentage
+    // })
 })
 </script>
 <style scoped>
